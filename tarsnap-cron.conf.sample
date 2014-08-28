@@ -33,6 +33,7 @@ BANDWIDTH=100000
 
 EXTRA_PARAMETERS="--maxbw-rate-up $BANDWIDTH"
 
+# PRESERVE_PATH=true
 
 
 ## options for tarsnap-prune
