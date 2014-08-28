@@ -44,6 +44,10 @@ for BACKUP in "${BACKUP_ARRAY[@]}"; do
     label=${SPLIT[0]}
     path=${SPLIT[1]}
     echo "==> create $PREFIX-$label-$SUFFIX"
-    cd $path && \
-      $TARSNAP $EXTRA_PARAMETERS -c -f $PREFIX-$label-$SUFFIX .
+    if [ -n "${PRESERVE_PATH}" -a ${PRESERVE_PATH} ] ; then
+        $TARSNAP $EXTRA_PARAMETERS -c -f $PREFIX-$label-$SUFFIX $path
+    else
+      cd $path && \
+        $TARSNAP $EXTRA_PARAMETERS -c -f $PREFIX-$label-$SUFFIX .
+    fi
 done
