@@ -12,7 +12,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 1 1 * * *  root  test $(date +\%u) -ne 1 && test $(date +\%e) -ne 01 && /usr/local/bin/tarsnap-archive.sh daily
 
 # hourly - 1 minute after the hour, except 1:01. 
-# 1 0,2-23 * * * root  /usr/local/bin/tarsnap-archive.sh hourly
+CONFIG=/etc/tarsnap-cron/tarsnap-cron-hourly.conf
+1 0,2-23 * * * root  [ -f ${CONFIG} ] && /usr/local/bin/tarsnap-archive.sh hourly
 
 #* * * * * 
 #| | | | | 
