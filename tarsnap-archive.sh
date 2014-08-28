@@ -4,9 +4,11 @@
 # Written by Tim Bishop, 2009.
 # Modified by Pronoiac, 2014. 
 
-# Directories to backup - set in
-CONFIG=/etc/tarsnap-cron.conf
-# CONFIG=tarsnap-cron.conf
+if [ -z "${CONFIG}"  -o  ! -f "${CONFIG}" ] ; then
+    # Directories to backup - set in
+    CONFIG=/etc/tarsnap-cron.conf
+    # CONFIG=tarsnap-cron.conf
+fi
 
 # note: this evals the config file, which can present a security issue
 # unless it's locked with the right permissions - e.g. not world-writable
